@@ -1,0 +1,16 @@
+var xmlhttp = new XMLHttpRequest();
+xmlhttp.onreadystatechange = function() {
+  if (this.readyState == 4 && this.status == 200) {
+    let myObj = JSON.parse(this.responseText);
+	myObj.sort((a,b) =>  a.nodetype.localeCompare(b.nodetype) || a.nodename.localeCompare(b.nodename) );
+	console.log(myObj);
+	let list = '';
+	
+	for( let i in myObj) {
+		list += '<li>' + i + ': ' +  myObj[i].nodetype + ' ' + myObj[i].nodename + ' ' + myObj[i].datetime + '</li>';
+	}
+	document.getElementById('div').innerHTML += '<ul>' + list + '</ul>';
+  }
+};
+xmlhttp.open("GET", "https://my-json-server.typicode.com/put4er/testDb2/test", true);
+xmlhttp.send();
