@@ -8,8 +8,8 @@
 <body>
 	<div id = "div"></div>
 	<form id = "myForm">
-		<label>First name:<input type="text" name="fname"></label><br>
-		<label>Second name:<input type="text" name="fname"></label><br>
+		<label>First name:<input type="text" name="fName"></label><br>
+		<label>Second name:<input type="text" name="sName"></label><br>
 		<p>Please select your preferred contact method:</p>
 		<div>
 			<input type="radio" id="contactChoice1" name="contact" value="email">
@@ -22,9 +22,9 @@
 			<label for="contactChoice3">Mail</label>
 		</div>
 		<div>
-			<input type="checkbox" name="vehicle1" value="ua" checked> Українська
-			<input type="checkbox" name="vehicle2" value="eng"> Англійська
-			<input type="checkbox" name="vehicle3" value="rus"> Російська
+			<input type="checkbox" name="language1" value="ua" checked> Українська
+			<input type="checkbox" name="language2" value="eng"> Англійська
+			<input type="checkbox" name="language3" value="rus"> Російська
 		</div>
 		<div>
 			<input name="myFile" type="file">
@@ -44,20 +44,20 @@
 <script>
 	if (document.forms[0] && window.FormData) {
 		var form = document.forms[0];
-		
-		// налаштування запиту
-		var request = new XMLHttpRequest();
-		request.open('GET', 'http://httpbin.org/ip', true);
-  
+	
 		//  `submit`
 		form.addEventListener('submit', function(event) {
 			event.preventDefault();
 			
-			// підготовка до відправлення
-			var formData = new FormData(form);
-
-			// відправка
-			request.send(formData);      
+		// налаштування запиту
+		var formData = new FormData(form);
+		var request = new XMLHttpRequest();
+			
+		// підготовка до відправлення
+		request.open('POST', 'http://ptsv2.com/t/df7zd-1571739505/post', true);
+			
+		// відправка
+		request.send(formData);      
 		});
 	}
 </script>
